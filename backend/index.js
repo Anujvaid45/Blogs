@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const morgan = require('morgan')
 const AuthRoutes = require('./routes/authRoutes.js')
+const blogRoutes = require('./routes/blogRoutes.js');
 // const categoryRoutes = require('./routes/categoryRoutes.js')
 // const productRoutes = require('./routes/productRoutes.js')
 
@@ -17,6 +18,7 @@ app.use(morgan('dev'))
 
 // //routes
 app.use('/api/v1/auth',AuthRoutes)
+app.use('/blog', blogRoutes);
 // app.use('/api/v1/category',categoryRoutes)
 // app.use('/api/v1/product',productRoutes)
 
