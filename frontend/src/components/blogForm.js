@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate} from 'react-router-dom';
 import '../styles/BlogForm.css';
 import Layout from '../Layout/Layout';
 const BlogForm = () => {
@@ -7,6 +8,7 @@ const BlogForm = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [successMessage, setSuccessMessage] = useState('');
+    const navigate = useNavigate()
   
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -21,9 +23,7 @@ const BlogForm = () => {
         console.log(response.data);
         setSuccessMessage('Blog post created successfully!');
         // Redirect to the home page after a brief delay
-        setTimeout(() => {
-            window.location.href = '/';
-        }, 2000);
+        setTimeout(()=>{navigate('/')},2000)
       })
       .catch((error) => {
         console.error('Error creating blog post:', error);

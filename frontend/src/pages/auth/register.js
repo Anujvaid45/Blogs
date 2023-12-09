@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios'
 import { useNavigate} from 'react-router-dom';
 import Layout from '../../Layout/Layout';
-// import '../../styles/AuthStyles.css';
+import '../../styles/authStyle.css';
 
 const Register = () => {
 
