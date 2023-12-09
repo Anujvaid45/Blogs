@@ -3,8 +3,7 @@ import axios from 'axios';
 import { useNavigate} from 'react-router-dom';
 import '../styles/BlogForm.css';
 import Layout from '../Layout/Layout';
-const BlogForm = () => {
-
+const BlogForms = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [successMessage, setSuccessMessage] = useState('');
@@ -61,7 +60,4 @@ const BlogForm = () => {
     );
 }
  
-export default BlogForm;
-
-
-
+export default BlogForms;
