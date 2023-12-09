@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/BlogForm.css';
+import Layout from '../Layout/Layout';
 const BlogForm = () => {
 
     const [title, setTitle] = useState("");
@@ -31,6 +32,7 @@ const BlogForm = () => {
     };
   
     return (
+      <Layout title={'Create'}>
         <div className="blog-form-container">
         <h1>Create a New Blog Post</h1>
         {successMessage && <p className="success-message">{successMessage}</p>}
@@ -55,6 +57,7 @@ const BlogForm = () => {
           <button type="submit">Submit</button>
         </form>
       </div>
+      </Layout>
     );
 }
  
