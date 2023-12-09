@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const {requireSignIn} = require('../middleware/authMiddleware.js');
 const BlogPost = require('../models/blogPost');
 
 // Get all blog posts
-router.get('/', async (req, res) => {
+router.get('/',requireSignIn, async (req, res) => {
   try {
-    const blogPosts = await BlogPost.find();
+    const blogPosts = await BlogPost.find({ user: req.user.id });
     res.json(blogPosts);
   } catch (error) {
     res.json({ message: error.message });
@@ -13,10 +14,11 @@ router.get('/', async (req, res) => {
 });
 
 // Create a new blog post
-router.post('/', async (req, res) => {
+router.post('/',requireSignIn, async (req, res) => {
   const blogPost = new BlogPost({
     title: req.body.title,
     content: req.body.content,
+    user: req.user.id,
   });
 
   try {

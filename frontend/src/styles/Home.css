@@ -1,0 +1,54 @@
+/* client/src/components/Home.css */
+.home-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 70px;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    color: #ecf0f1;
+  }
+  
+  .home-container:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .blog-post {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  }
+  
+  .blog-post:hover {
+    transform: scale(1.02);
+    background: linear-gradient(45deg, #34495e, #2c3e50);
+  }
+  
+  .blog-title {
+    color: #ecf0f1;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .blog-content {
+    color: #bdc3c7;
+    line-height: 1.5;
+    font-size: 18px; /* Adjust the font size as needed */
+  padding: 15px; /* Adjust the padding as needed */
+   /* Adjust the width as needed */
+  box-sizing: border-box;
+  }
+  
+  /* Optional: Add a subtle background pattern */
+  body {
+    background-color: #ecf0f1;
+    background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0),
+                      linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+  }
+  

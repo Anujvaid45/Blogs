@@ -1,5 +1,5 @@
 import {useState} from 'react'
-
+import Layout from '../../Layout/Layout';
 import { toast } from 'react-toastify';
 import axios from 'axios'
 import { useNavigate,useLocation} from 'react-router-dom';
@@ -37,6 +37,7 @@ const Login = () => {
         }
     }
   return (
+    <Layout title={'Login'}>
     <div title={'Login'}>
     <div className="form-container">
         <form onSubmit={handleSubmit}>
@@ -64,6 +65,7 @@ const Login = () => {
         </form>
     </div>
 </div>
+</Layout>
 
   )
 }
