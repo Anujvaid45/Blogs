@@ -1,6 +1,7 @@
 import { NavLink,Link } from "react-router-dom";
 import { useAuth } from "../context/auth.js";
 import { toast } from 'react-toastify';
+import '../styles/Header.css';
 const Header = () => {
 
   const [auth,setAuth] = useAuth()
