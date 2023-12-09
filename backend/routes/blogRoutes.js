@@ -6,7 +6,8 @@ const BlogPost = require('../models/blogPost');
 // Get all blog posts
 router.get('/',requireSignIn, async (req, res) => {
   try {
-    const blogPosts = await BlogPost.find({ user_id: req.user._id });
+    const user_id = req.user._id
+    const blogPosts = await BlogPost.find({ user_id });
     res.json(blogPosts);
   } catch (error) {
     res.json({ message: error.message });
