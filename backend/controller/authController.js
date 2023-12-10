@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
  const registerController = async (req, res) => {
   try {
-    const { name, email, password, phone, address,answer } = req.body;
+    const { name, email, password, phone, address } = req.body;
     //validations
     if (!name) {
       return res.send({ error: "Name is Required" });
@@ -21,9 +21,7 @@ const jwt = require('jsonwebtoken');
     if (!address) {
       return res.send({ message: "Address is Required" });
     }
-    if (!answer) {
-      return res.send({ message: "answer is Required" });
-    }
+
     //check user
     const exisitingUser = await userModel.findOne({ email });
     //exisiting user
@@ -42,7 +40,6 @@ const jwt = require('jsonwebtoken');
       phone,
       address,
       password: hashedPassword,
-      answer,
     }).save();
 
     res.status(201).send({
@@ -99,7 +96,6 @@ const jwt = require('jsonwebtoken');
         email: user.email,
         phone: user.phone,
         address: user.address,
-        role: user.role,
       },
       token,
     });
@@ -113,91 +109,6 @@ const jwt = require('jsonwebtoken');
   }
 };
 
-//forgotPasswordController
-
-const forgotPasswordController = async(req,res) =>{
-  try {
-    const {email,answer,newPassword} =req.body
-    if (!email) {
-      return res.send({ message: "Email is Required" });
-    }
-    if (!answer) {
-      return res.send({ message: "answer is Required" });
-    }
-    if (!newPassword) {
-      return res.send({ message: "new password is Required" });
-    }
-
-    //check
-    const user = await userModel.findOne({email,answer})
-    //validation
-    if(!user){
-      return RegExp.status(404).send({
-        success:false,
-        message:'Wrong email or answer',
-      })
-    }
-    const hashed = await hashPassword(newPassword)
-    await userModel.findByIdAndUpdate(user._id,{password:hashed})
-    res.status(200).send({
-      success:true,
-      message:'password reset successfully',
-    })
-  } catch (error) {
-    console.log(error)
-    res.status(500).send({
-      success: false,
-      message: "Something went wrong",
-      error,
-    });
-  }
-};
 
 
-//test controller
- const testController = (req, res) => {
-  try {
-    res.send("Protected Routes");
-  } catch (error) {
-    console.log(error);
-    res.send({ error });
-  }
-};  
-
-//update user profile
-const updateProfileController = async(req,res)=>{
-  try {
-    const { name, email, password, address, phone } = req.body;
-    const user = await userModel.findById(req.user._id);
-    //password
-    if (password && password.length < 6) {
-      return res.json({ error: "Passsword is required and 6 character long" });
-    }
-    const hashedPassword = password ? await hashPassword(password) : undefined;
-    const updatedUser = await userModel.findByIdAndUpdate(
-      req.user._id,
-      {
-        name: name || user.name,
-        password: hashedPassword || user.password,
-        phone: phone || user.phone,
-        address: address || user.address,
-      },
-      { new: true }
-    );
-    res.status(200).send({
-      success: true,
-      message: "Profile Updated SUccessfully",
-      updatedUser,
-    });
-    
-  } catch (error) {
-    console.log(error)
-    res.status(500).send({
-      success: false,
-      message: "Something went wrong",
-      error,
-    });
-  }
-}
-
-module.exports = {registerController,loginController,testController,forgotPasswordController,updateProfileController}
+module.exports = {registerController,loginController}
