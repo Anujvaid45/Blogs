@@ -1,17 +1,24 @@
 import { NavLink,Link } from "react-router-dom";
 import { useAuth } from "../context/auth.js";
 import { toast } from 'react-toastify';
+import React, { useState } from 'react';
+import { useNavigate} from 'react-router-dom';
 import '../styles/Header.css';
 const Header = () => {
 
-  const [auth,setAuth] = useAuth()
+  const {auth,setAuth} = useAuth()
+  // eslint-disable-next-line
+  const [blogPosts, setBlogPosts] = useState([]);
+  const navigate = useNavigate()
   const handleLogout = () =>{
     setAuth({
       ...auth,user:null,token:''
     })
+    setBlogPosts([]);
 
     localStorage.removeItem('auth');
     setTimeout(()=>{ toast.success('Logout Successful')},100)
+    setTimeout(()=>{navigate('/login')},2000)
    
   };
     return ( 
@@ -30,26 +37,26 @@ const Header = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand" style={{fontFamily:'krok',fontWeight:'400'}}>
-               Blog App
+            <Link to="/" className="navbar-brand">
+               BLOGS
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               
               <li className="nav-item">
                 <NavLink to="/" className="nav-link ">
-                  HomePage
+                  HOME
                 </NavLink>
               </li>
               {!auth?.user ?(
                 <>
                   <li className="nav-item">
                     <NavLink to="/register" className="nav-link">
-                      Register
+                      REGISTER
                     </NavLink>
                   </li>
                   <li className="nav-item">
                     <NavLink to="/login" className="nav-link">
-                      Login
+                      LOGIN
                     </NavLink>
                   </li>
                 </>
@@ -71,7 +78,7 @@ const Header = () => {
                           to={'/write'}
                           className="dropdown-item"
                         >
-                          Write
+                          WRITE
                         </NavLink>
                       </li>
                       <li>
@@ -80,7 +87,7 @@ const Header = () => {
                           to="/"
                           className="dropdown-item"
                         >
-                          Logout
+                          LOGOUT
                         </NavLink>
                       </li>
                     </ul>

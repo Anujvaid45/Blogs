@@ -13,7 +13,6 @@ const Register = () => {
     const[password,setPassword] = useState("")
     const[phone,setPhone] = useState("")
     const[address,setAddress] = useState("")
-    const[answer,setAnswer] = useState("")
     const navigate = useNavigate()
 
 
@@ -21,7 +20,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const res = await axios.post('https://blogs-api1.onrender.com/api/v1/auth/register',
-            {name,email,password,phone,address,answer}
+            {name,email,password,phone,address}
             );
             if(res.data.success){
                 toast.success(res.data.message)
@@ -45,8 +44,11 @@ const Register = () => {
         <div title={'Register'}>
             <div className="form-container">
                 <form onSubmit={handleSubmit}>
-                <h4 className="title">REGISTER FORM</h4>
-                
+                {/* <h4 className="title">REGISTER FORM</h4> */}
+                <div class="txt" id="txt">
+        <b>R</b><b>E</b><b>G</b><b>I</b><b>S</b><b>T</b><b>E</b><b>R</b>
+</div>
+<br />
                 <div className="mb-3">
                         <input type="text" 
                         placeholder='Enter Your Name'
@@ -87,15 +89,7 @@ const Register = () => {
                          value = {address}
                          />
                     </div>
-                    <div className="mb-3">
-                        <input type="text"
-                         className="form-control"
-                         placeholder='Who Is your favourite player'
-                         onChange={(e)=>setAnswer(e.target.value)}
-                         value = {answer}
-                         />
-                    </div>
-
+                    
                     <button type="submit" className="btn btn-primary">REGISTER</button>
                 </form>
             </div>

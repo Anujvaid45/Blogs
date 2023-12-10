@@ -12,6 +12,11 @@ const AuthProvider = ({ children }) => {
   //default axios
   axios.defaults.headers.common["Authorization"] = auth?.token;
 
+  const updateUser = (userData) => {
+    localStorage.setItem("auth", JSON.stringify(userData));
+    setAuth(userData);
+  };
+
   useEffect(() => {
     const data = localStorage.getItem("auth");
     if (data) {
@@ -25,7 +30,7 @@ const AuthProvider = ({ children }) => {
     //eslint-disable-next-line
   }, []);
   return (
-    <AuthContext.Provider value={[auth, setAuth]}>
+    <AuthContext.Provider value={{auth, setAuth , updateUser}}>
       {children}
     </AuthContext.Provider>
   );

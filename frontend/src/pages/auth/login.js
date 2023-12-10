@@ -9,7 +9,8 @@ import { useAuth } from '../../context/auth';
 const Login = () => {
     const[email,setEmail] = useState("")
     const[password,setPassword] = useState("")
-    const [auth,setAuth] = useAuth()
+    // eslint-disable-next-line
+    const {auth,setAuth,updateUser} = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -21,11 +22,16 @@ const Login = () => {
             );
             if(res && res.data.success){
                 toast.success(res.data.message)
-                setAuth({
-                    ...auth,
-                    user:res.data.user,
-                    token:res.data.token
-                })
+                // setAuth({
+                //     ...auth,
+                //     user:res.data.user,
+                //     token:res.data.token
+                // })
+                const userData = {
+                    user: res.data.user,
+                    token: res.data.token,
+                };
+                updateUser(userData);
                 localStorage.setItem('auth',JSON.stringify(res.data))
                 setTimeout(()=>{navigate(location.state || '/')},2000)
             }else{
@@ -41,7 +47,11 @@ const Login = () => {
     <div title={'Login'}>
     <div className="form-container">
         <form onSubmit={handleSubmit}>
-        <h4 className="title">LOGIN</h4>
+        {/* <h4 className="title">LOGIN</h4> */}
+        <div class="txt" id="txt">
+        <b>L</b><b>O</b><b>G</b><b>I</b><b>N</b>
+</div>
+<br />
 
             <div className="mb-3">
                 <input type="email"
@@ -60,7 +70,6 @@ const Login = () => {
                  />
             </div>
 
-            <button type="button" className="btn btn-primary" onClick={()=>{navigate('/forgot-password')}} style={{marginRight:'20px'}}>forgot password</button>
             <button type="submit" className="btn btn-primary">LOGIN</button>
         </form>
     </div>

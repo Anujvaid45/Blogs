@@ -1,59 +1,65 @@
 /* Add this to your existing styles or create a new CSS file */
 
 .container-fluid {
-    background-color: #007bff;
-    padding: 15px 0;
-  }
-  
-  .navbar-toggler {
-    border: none;
-  }
-  
-  .navbar-toggler-icon {
-    color: #fff;
-  }
-  
-  .navbar-brand {
-    color: #fff;
-    font-size: 24px;
-  }
-  
-  .navbar-nav {
-    align-items: center;
-  }
-  
-  .nav-item {
-    margin-right: 10px;
-  }
-  
-  .nav-link {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-  }
-  
-  .nav-link:hover {
-    color: #f8f9fa;
-  }
-  
-  .dropdown-menu {
-    background-color: #007bff;
-    border: none;
-  }
-  
-  .dropdown-item {
-    color: #fff;
-  }
-  
-  .dropdown-item:hover {
-    background-color: #0056b3;
-    color: #fff;
-  }
-  
-  /* Extend the navbar to full screen width */
-  .navbar {
-    width: 100%;
-    padding-right: 0;
-    padding-left: 0;
-  }
-  
+  background-color: #007bff;
+  padding: 15px 0;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  color: #fff;
+}
+
+.navbar-brand {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.nav-item {
+  margin-right: 15px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #f8f9fa;
+}
+
+.dropdown-menu {
+  background-color: #007bff;
+  border: none;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  color: #fff;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.dropdown-item:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+/* Extend the navbar to full screen width */
+.navbar {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
